@@ -1,14 +1,22 @@
-name: CI
+name: QA Automation
 on:
   push:
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }} 
+      cancel-in-progress: true
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.5
+      - name: Concurrency Group
+        run: echo ${{ github.workflow }}-${{ github.ref }} 
       - name: Simulate doing something
         run: sleep 1m
