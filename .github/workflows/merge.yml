@@ -1,4 +1,4 @@
-name: CI
+name: QA Automation
 on:
   push:
   workflow_dispatch:
