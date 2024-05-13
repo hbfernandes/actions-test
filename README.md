@@ -4,3 +4,4 @@ Perform some github action tests
 d
 e
 f
+e
